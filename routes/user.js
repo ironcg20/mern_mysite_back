@@ -22,7 +22,7 @@ router.post("/", singinUser);
  * @description add a new todo
  * @access public
  */
-router.post("/", postCreateUser);
+router.post("/create", postCreateUser);
 
 /**
  * @route PUT api/todo/:id
