@@ -104,28 +104,28 @@ exports.postCreateUser = (req, res) => {
 //     return res.status(500).json({ message: 'Failed to add user', error: error.message });
 //   }
 // };
-exports.postCreateUser = async (req, res) => {
-  const { email, password } = req.body;
+// exports.postCreateUser = async (req, res) => {
+//   const { email, password } = req.body;
 
-  try {
-    // Check if the email already exists
-    const existingUser = await User.findOne({ email });
+//   try {
+//     // Check if the email already exists
+//     const existingUser = await User.findOne({ email });
 
-    if (existingUser) {
-      return res.status(400).json({ message: 'Email already exists' });
-    }
+//     if (existingUser) {
+//       return res.status(400).json({ message: 'Email already exists' });
+//     }
 
-    // Hash the password using bcrypt
-    const hashedPassword = await bcrypt.hash(password, 10); // Adjust the salt rounds as needed
+//     // Hash the password using bcrypt
+//     const hashedPassword = await bcrypt.hash(password, 10); // Adjust the salt rounds as needed
 
-    // Create a new user with the hashed password
-    const newUser = await User.create({ email, password: hashedPassword });
+//     // Create a new user with the hashed password
+//     const newUser = await User.create({ email, password: hashedPassword });
 
-    return res.json({ message: 'User added successfully', data: newUser });
-  } catch (error) {
-    return res.status(500).json({ message: 'Failed to add user', error: error.message });
-  }
-};
+//     return res.json({ message: 'User added successfully', data: newUser });
+//   } catch (error) {
+//     return res.status(500).json({ message: 'Failed to add user', error: error.message });
+//   }
+// };
 
 exports.putUpdateUser = (req, res) => {
   User.findByIdAndUpdate(req.params.id, req.body)
